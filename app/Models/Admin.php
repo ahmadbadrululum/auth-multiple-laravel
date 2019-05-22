@@ -10,6 +10,9 @@ class Admin extends Authenticatable
 {
     use Notifiable;
 
+    // mengarah ke auth.php guard api-admin
+    protected $guard = 'admin';
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
