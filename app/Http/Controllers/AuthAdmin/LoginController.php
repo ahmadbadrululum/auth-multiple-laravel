@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Auth\Guard;
-
+use App\Models\Admin;
 class LoginController extends Controller
 {
     /*
@@ -24,6 +24,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest:admin')->except('logout');
     }
+    
 
     public function showLoginForm()
     {
@@ -54,6 +55,31 @@ class LoginController extends Controller
         Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
     }
+
+    public function showRegistrationForm()
+    {
+        return view('authAdmin.register');
+    }
+
+    public function register(Request $request)
+    {
+
+        // die('s');
+        $request->validate([
+            'name' => 'required|string|max:199',
+            'email' => 'required|string|email|max:255|unique:admins',
+            'password' => 'required|string|min:6|confirmed'
+        ]);
+        
+        Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('admin.home')->with('success','Registration Success');
+    }
+
 
     
 }
