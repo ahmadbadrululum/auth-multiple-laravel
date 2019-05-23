@@ -77,7 +77,7 @@ class LoginController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('admin.home')->with('success','Registration Success');
+        // return redirect()->route('admin.home')->with('success','Registration Success');
     }
 
 
