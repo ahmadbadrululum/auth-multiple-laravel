@@ -81,12 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Users
                 </div>
 
                 <div class="links">
-                    @component('components.who')
-                    @endcomponent
+                   page depan
                 </div>
             </div>
         </div>

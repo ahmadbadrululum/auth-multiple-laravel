@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts-admin.app')
 
 @section('content')
 <div class="container">
@@ -8,8 +8,7 @@
                 <div class="card-header">Dashboard Admin</div>
 
                 <div class="card-body">
-                @component('components.who')
-                @endcomponent
+                Page Admin
                 </div>
             </div>
         </div>

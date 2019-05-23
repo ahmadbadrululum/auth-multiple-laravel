@@ -8,8 +8,7 @@
                 <div class="card-header">Dashboard User</div>
 
                 <div class="card-body">
-                @component('components.who')
-                @endcomponent
+                Halaman users
                 </div>
             </div>
         </div>

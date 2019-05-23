@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AuthAdmin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Guard;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,6 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('authAdmin.login');
-
     }
 
     public function login(Request $request)
@@ -51,12 +51,8 @@ class LoginController extends Controller
 
     public function logout()
     {
-        $this->guard('admin')->logout();
-        return redirect('/');
-        // return $this->loggedOut($request) ?: redirect('/');
-        // ini menghapus semua session
-        // $request->session()->invalidate();
-
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login');
     }
 
     

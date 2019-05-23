@@ -35,17 +35,13 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except(['logout', 'logoutUser']);
+        $this->middleware('guest')->except('logout');
     }
 
-    public function logoutUser()
+    public function logout()
     {
-        $this->guard('admin')->logout();
+        $this->guard('web')->logout();
         return redirect('/');
-        // return $this->loggedOut($request) ?: redirect('/');
-        // ini menghapus semua session
-        // $request->session()->invalidate();
-
     }
 
 }
